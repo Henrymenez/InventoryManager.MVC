@@ -4,6 +4,7 @@
 @{
     Layout = null;
 }
+@model InventoryManager.BLL.models.UserViewModel;
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +12,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Inventory Manager - Login</title>
+    <title>Inventory Manager - Home</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -47,13 +48,13 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" asp-controller="Start" asp-action="Index">Home</a></li>
+                    <li><a class="nav-link scrollto active" asp-action="Index" asp-controller="Start">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">About</a></li>
                     <li><a class="nav-link scrollto" href="#services">Services</a></li>
                     <li><a class="nav-link   scrollto" href="#portfolio">Portfolio</a></li>
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="getstarted scrollto" asp-controller="Start" asp-action="Register">Get Started</a></li>
+                    <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -69,28 +70,60 @@
         <section id="contact" class="contact">
             <div class="container" data-aos="fade-up">
 
+                @if (@ViewBag.ErrMsg != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> @ViewBag.ErrMsg
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                @if (@TempData["SuccessMsg"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Success!</strong> @TempData["SuccessMsg"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
                 <div class="section-title">
-                    <h2>Login</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+                    <h2>Register</h2>
+                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
                 </div>
 
                 <div class="row">
-
-
-                    <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-                        <form action="" method="post" role="form" class="php-email-form">
-                            <div class="row">
+                    @* <div class="alert-danger" asp-validation-summary="@ValidationSummary.All"></div>*@
+                      
+                    <div class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch">
+                        <form asp-controller="User" asp-action="Save">
+                            
                                 <div class="form-group ">
-                                    <label for="name">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" required>
+                                    <label asp-for="@Model.FullName">FullName</label>
+                                    <input asp-for="@Model.FullName" class="form-control" id="name" >
+                                <span style="color: red" asp-validation-for="FullName"></span>
                                 </div>
-                            </div>
+                                <div class="form-group ">
+                                    <label asp-for="@Model.Email">Email</label>
+                                <input class="form-control" id="email" asp-for="@Model.Email">
+                                <span style="color: red" asp-validation-for="Email"></span>
+                                </div>
 
                             <div class="form-group">
-                                <label for="name">Password</label>
-                                <input type="password" class="form-control" name="subject" id="subject" required>
+                                <label asp-for="@Model.Phone">Phone</label>
+                                <input class="form-control" asp-for="@Model.Phone" id="subject" >
+                                <span style="color: red" asp-validation-for="Phone"></span>
                             </div>
-                            <a asp-controller="Start" asp-action="Register">Don't have an account? click Here to register</a>
+                            <div class="form-group">
+                                <label asp-for="@Model.Password">Password</label>
+                                <input asp-for="@Model.Password" class="form-control"  id="subject">
+                                <span style="color: red" asp-validation-for="Password"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.ConfirmPassword">Confirm Password</label>
+                                <input asp-for="@Model.ConfirmPassword" class="form-control"  id="subject">
+                                <span style="color: red" asp-validation-for="ConfirmPassword"></span>
+                            </div>
+                            <a asp-action="Login" asp-controller="User">Click here to login</a>
                             <br />
                             <div class="text-center"><button type="submit">Submit</button></div>
                         </form>
@@ -170,6 +203,12 @@
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    @section Scripts
+        {
+        @{
+            Html.RenderPartial("_ValidationScriptsPartial");
+        };
+    }
 
     <!-- Vendor JS Files -->
     <script src="~/css/assets/vendor/aos/aos.js"></script>

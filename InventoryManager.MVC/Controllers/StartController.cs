@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using InventoryManager.BLL.models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryManager.MVC.Controllers
 {
@@ -9,14 +10,6 @@ namespace InventoryManager.MVC.Controllers
             return View();
         }
 
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        public IActionResult Login()
-        {
-            return View();
-        }
+      
     }
 }
