@@ -43,7 +43,7 @@ namespace InventoryManager.MVC.Controllers
                     TempData["SuccessMsg"] = msg;
 
                     //return RedirectToAction("Login");
-                    return View("Register");
+                    return View("Login");
                 }
 
                 ViewBag.ErrMsg = msg;
@@ -65,15 +65,15 @@ namespace InventoryManager.MVC.Controllers
                     ViewBag.UserLoggedID = user.Id;
                     ViewBag.UserLoggedName = user.FullName;
                     return View("Index");
-                   // return RedirectToAction("Register");
+                    // return RedirectToAction("Register");
                 }
 
                 ViewBag.ErrMsg = msg;
                 return View("Login");
 
             }
-           return View("Login");
-         
+            return View("Login");
+
         }
 
     }

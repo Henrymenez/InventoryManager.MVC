@@ -4,6 +4,7 @@ using InventoryManager.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventoryManager.DAL.Migrations
 {
     [DbContext(typeof(InventoryManagerDbContext))]
-    partial class InventoryManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230313073505_AddedSalesEntity")]
+    partial class AddedSalesEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

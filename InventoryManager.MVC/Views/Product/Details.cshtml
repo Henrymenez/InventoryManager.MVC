@@ -20,7 +20,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Id)
+            @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
@@ -58,8 +58,7 @@
     <a asp-controller="Product" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <form asp-action="Delete" asp-controller="Product">
       
-        <label asp-for="UserId"></label>
-        <input asp-for="UserId" />
+        <input type="hidden" asp-for="UserId" />
         <input type="hidden" asp-for="Id" />
         <button type="submit" class="btn btn-danger"> Delete </button> |
         </form>

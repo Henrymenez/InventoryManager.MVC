@@ -33,9 +33,9 @@ namespace InventoryManager.BLL.Implementation
                     Phone = user.Phone
 
                 };
-                _userRepo.Add(newUser);
-                var rowChanges = await _unitOfWork.SaveChangesAsync();
-                return rowChanges > 0 ? (true, $"User: {user.FullName} was successfully created!") : (false, "Operation failed!");
+                User userCreated = await _userRepo.AddAsync(newUser);
+                // _unitOfWork.SaveChangesAsync();
+                return userCreated != null ? (true, $"User: {user.FullName} was successfully created! Login") : (false, "Operation failed!");
             }
             catch (Exception ex)
             {

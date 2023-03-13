@@ -22,8 +22,9 @@ namespace InventoryManager.MVC
             });
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork<InventoryManagerDbContext>>();
-            builder.Services.AddScoped<IUserService, UserService>();//todo: show other life-cycles
-            builder.Services.AddScoped<IProductService, ProductService>();//todo: show other life-cycles
+            builder.Services.AddScoped<IUserService, UserService>();//todo: show user life-cycles
+            builder.Services.AddScoped<IProductService, ProductService>();//todo: show product life-cycles
+            builder.Services.AddScoped<ISalesServices, SalesService>();//todo: show sales life-cycles
 
             var app = builder.Build();
 

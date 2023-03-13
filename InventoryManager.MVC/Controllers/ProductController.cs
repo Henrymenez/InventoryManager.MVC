@@ -1,7 +1,9 @@
 ﻿using InventoryManager.BLL.Interfaces;
 using InventoryManager.BLL.Models;
+using InventoryManager.DAL.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace InventoryManager.MVC.Controllers
 {
@@ -18,13 +20,26 @@ namespace InventoryManager.MVC.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<ProductViewModel> prodModel = _productService.GetUserProduct(1);
+            IEnumerable<ProductViewModel> prodModel = _productService.GetUserProduct(1004);
             return View(prodModel);
         }
 
-        public IActionResult AddNew()
+        public IActionResult AddNew(int Id)
         {
-            return View(new ProductViewModel());
+               var newProd = new ProductViewModel()
+            {
+               
+                Name = default,
+            Description = default,
+            Category = default,
+            Quantity = default,
+            Price = default,
+            BrandName = default,
+            UserId = Id
+        };
+
+            return View(newProd);
+           
         }
         [HttpPost]
         public async Task<IActionResult> Add(ProductViewModel model)
@@ -99,9 +114,9 @@ namespace InventoryManager.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int userId, int prodId)
+        public async Task<IActionResult> Delete(int userId, int Id)
         {
-            var (successful, msg) = await _productService.DeleteProductAsync(userId, prodId);
+            var (successful, msg) = await _productService.DeleteProductAsync(userId, Id);
 
             if (successful)
             {

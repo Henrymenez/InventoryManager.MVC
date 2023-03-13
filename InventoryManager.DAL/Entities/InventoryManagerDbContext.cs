@@ -12,7 +12,7 @@ namespace InventoryManager.DAL.Entities
         public InventoryManagerDbContext(DbContextOptions<InventoryManagerDbContext> options) : base(options)
         {
 
-        }
+        }   
 
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -53,7 +53,19 @@ namespace InventoryManager.DAL.Entities
                 .HasMaxLength(50)
                 .IsRequired();
 
+            modelBuilder.Entity<Sales>()
+                .Property(s => s.Name) 
+                .HasMaxLength(50)
+                .IsRequired();
 
+            modelBuilder.Entity<Sales>()
+                .Property(s => s.Quantity)
+                .IsRequired();
+
+            modelBuilder.Entity<Sales>()
+                .Property(s => s.Price)
+                .IsRequired();
+            
             base.OnModelCreating(modelBuilder);
         }
     }

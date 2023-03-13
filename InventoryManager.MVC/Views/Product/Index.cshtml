@@ -17,7 +17,8 @@
 
 
 <h4>Hello, here is a list of your products</h4>
-<div><a asp-action="AddNew" asp-controller="Product" class="btn btn-primary" style="float: right">Add New Product</a></div>
+<div><a asp-action="Index" asp-controller="Sales" asp-route-id="@Model.Select(p => p.UserId).ToList().FirstOrDefault()" class="btn btn-primary" style="float: left">All Sales</a></div>
+<div><a asp-action="AddNew" asp-controller="Product" asp-route-id="@Model.Select(p => p.UserId).ToList().FirstOrDefault()" class="btn btn-primary" style="float: right">Add New Product</a></div>
     <table class="table table-striped">
 
         <thead>
@@ -48,10 +49,11 @@
                      <td>
                 <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.value.Id">Edit</a> |
                 <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@item.value.Id">Details</a> |
-                <a class="btn btn-danger btn-sm" asp-action="Details" asp-route-id="@item.value.Id">Delete</a>
+                <a class="btn btn-danger btn-sm" asp-action="Details" asp-route-id="@item.value.Id">Delete</a> |
+              <a class="btn btn-success btn-sm" asp-action="AddNew" asp-controller="Sales" asp-route-id="@item.value.Id">Sell</a>
             </td>
                 </tr>
-            }
+            };
             }
 
         </tbody>
@@ -61,8 +63,8 @@
     {
     @{
         Html.RenderPartial("_ValidationScriptsPartial");
-    }
-    ;
+    };
+    
 }
 
 

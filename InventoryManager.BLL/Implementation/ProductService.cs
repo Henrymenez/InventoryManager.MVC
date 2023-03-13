@@ -120,6 +120,7 @@ namespace InventoryManager.BLL.Implementation
             return new ProductViewModel
             {
                 Id = product.Id,
+                UserId = product.UserId,
                 Name = product.Name,
                 Description = product.Description,
                 Category = product.Category,
