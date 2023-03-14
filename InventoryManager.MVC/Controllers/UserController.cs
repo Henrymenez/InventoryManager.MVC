@@ -1,4 +1,5 @@
-﻿using InventoryManager.BLL.Interfaces;
+﻿using InventoryManager.BLL.Implementation;
+using InventoryManager.BLL.Interfaces;
 using InventoryManager.BLL.models;
 using InventoryManager.BLL.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -74,6 +75,21 @@ namespace InventoryManager.MVC.Controllers
             }
             return View("Login");
 
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (!(id > 0))
+            {
+                return NotFound();
+            }
+            var userFound = await _userService.GetUserDetail(id);
+            if (userFound == null)
+            {
+                return NotFound();
+            }
+
+            return View(userFound);
         }
 
     }

@@ -14,5 +14,7 @@ namespace InventoryManager.BLL.Interfaces
         Task<(bool successful, string msg)> UserRegister(UserViewModel user);
 
         Task<(bool successful, string msg,User userModel)> UserLogin(LoginViewModel user);
+
+        Task<ProfileViewModel> GetUserDetail(int id);
     }
 }

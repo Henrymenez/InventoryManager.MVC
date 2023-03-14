@@ -15,6 +15,7 @@
         </div>
     }
 
+<div><a asp-action="Edit" asp-controller="User" asp-route-id="@Model.Select(p => p.UserId).ToList().FirstOrDefault()" class="btn btn-primary" style="">Profile</a></div>
 
 <h4>Hello, here is a list of your products</h4>
 <div><a asp-action="Index" asp-controller="Sales" asp-route-id="@Model.Select(p => p.UserId).ToList().FirstOrDefault()" class="btn btn-primary" style="float: left">All Sales</a></div>

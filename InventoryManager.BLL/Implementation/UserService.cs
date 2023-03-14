@@ -68,5 +68,17 @@ namespace InventoryManager.BLL.Implementation
 
         }
 
+        public async Task<ProfileViewModel> GetUserDetail(int id)
+        {
+          var user =  await _userRepo.GetByIdAsync(id);
+            return new ProfileViewModel
+            {
+                FullName = user.FullName,
+                Email = user.Email,
+                Phone = user.Phone,
+                UserId = user.Id
+            };
+            
+        }
     }
 }
