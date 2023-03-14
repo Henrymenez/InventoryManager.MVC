@@ -15,11 +15,11 @@
 
 ### The migration will seed the db with some demo data which you can be able to use to test
 
-`Dav Hart: Fullname - Uzumaki Naruto,
+` Fullname - Uzumaki Naruto,
             Email - uzumaki.naruto@domain.com,
             Password - 123445678`
     
-`Rayn Jim:  Fullname - Sasuke Uchiha,
+` Fullname - Sasuke Uchiha,
             Email - sasuke.uchiha@domain.com,
             Password - 6789012345`
 
