@@ -24,5 +24,5 @@
             Password - 6789012345`
 
 
-### Side Note: After User Auth i was unable to pass userId around because i am still working on implimenting identity so if you use any other user to login that is not user ID 1 (Naruto), like you created a new user or want to use user 2. Go to the ProductController Index action and change the id from 1 to the userID you want to use.
+### Side Note: After User Auth i was unable to pass userId around because i am still working on implimenting identity so if you use any other user to login that is not user ID 1 (Naruto), like you created a new user or want to use user 2. Go to the ProductController Index action and change the id from 1 to the userID you want to use and build.
 # THANK YOU
