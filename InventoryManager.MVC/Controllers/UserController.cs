@@ -92,5 +92,18 @@ namespace InventoryManager.MVC.Controllers
             return View(userFound);
         }
 
+        public async Task<IActionResult> UpdateProfile(ProfileViewModel model)
+        {
+        var (success,msg) =  await _userService.UpdateUserProfile(model);
+
+            if (success)
+            {
+                @ViewBag.SuccMsg = msg;
+                return View("Edit", model);
+            }
+            @ViewBag.ErrMsg = msg;
+            return View("Edit",model);
+        }
+
     }
 }

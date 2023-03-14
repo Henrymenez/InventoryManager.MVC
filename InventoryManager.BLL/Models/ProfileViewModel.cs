@@ -12,8 +12,11 @@ namespace InventoryManager.BLL.Models
         [Required, StringLength(50, ErrorMessage = "Email character limit is between 3 and 50", MinimumLength = 10)]
         public string Email { get; set; }
 
-        [StringLength(15, ErrorMessage = "Phone charater limit is between 11 and 15", MinimumLength = 11)]
+        [Required,StringLength(15, ErrorMessage = "Phone charater limit is between 11 and 15", MinimumLength = 11)]
         public string Phone { get; set; }
+
+        [Required]
+        public string Password { get; set; }
 
         public int UserId { get; set; }
 

@@ -2,6 +2,7 @@
 using InventoryManager.BLL.models;
 using InventoryManager.BLL.Models;
 using InventoryManager.DAL.Entities;
+using System.Globalization;
 using TodoList.DAL.Repository;
 
 
@@ -76,9 +77,28 @@ namespace InventoryManager.BLL.Implementation
                 FullName = user.FullName,
                 Email = user.Email,
                 Phone = user.Phone,
-                UserId = user.Id
+                UserId = user.Id,
+                Password = user.Password
             };
             
+        }
+
+        public async Task<(bool success, string msg)> UpdateUserProfile(ProfileViewModel model)
+        {
+            var user = await _userRepo.GetByIdAsync(model.UserId);
+            if (user == null)
+            {
+                return (false, $"User with id: {model.UserId} wasn't found");
+            }
+
+            user.FullName = model.FullName;
+            user.Email = model.Email;
+            user.Phone = model.Phone;
+            user.Password = model.Password;
+
+            return await _unitOfWork.SaveChangesAsync() > 0 ? (true, $"User with Id:{model.UserId} was Updated") : (false, $"Update Failed");
+
+
         }
     }
 }
