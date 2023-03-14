@@ -1,10 +1,4 @@
 ﻿using InventoryManager.BLL.Models;
-using InventoryManager.DAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InventoryManager.BLL.Interfaces
 {
@@ -15,6 +9,12 @@ namespace InventoryManager.BLL.Interfaces
         Task<(bool successful, string msg, SalesViewModel obj)> Add(SalesViewModel model);
 
         Task<SalesViewModel> GetSale(int SaleId);
+
+        Task<SalesViewModel> GetSalesById(int id);
+
+        Task<(bool successful, string msg)> EditSaleAsync(SalesViewModel sale);
+
+        Task<(bool successful, string msg)> DeleteSaleAsync(int userId, int saleId);
 
 
     }
