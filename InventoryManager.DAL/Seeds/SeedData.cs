@@ -42,19 +42,7 @@ namespace InventoryManager.DAL.Seeds
                             Category = Category.Phones,
                             Quantity = 200,
                             Price = 14500,
-                            BrandName = "Nokia",
-                            Sales = new List<Sales>()
-                            {
-                                new Sales
-                                {
-                                    Name = "Nokia Express Music",
-                                     Category = Category.Phones,
-                                     Quantity = 20,
-                                     Price = 14500,
-
-                                }
-                            }
-
+                            BrandName = "Nokia"
                         },
 
                         new Product
@@ -65,7 +53,6 @@ namespace InventoryManager.DAL.Seeds
                             Quantity = 100,
                             Price = 4500,
                               BrandName = "Toshiba"
-
                         },
                         new Product
                         {
