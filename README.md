@@ -11,7 +11,7 @@
 - User edit, view and delete Sales
 - User Generate Balance Sheet (coming soon)
 
-### When App starts a change the connection string in the " InventoryManager.MVC\InventoryManager.DAL\Entities\InventoryManagerDbContext.cs " File. Run the migration then start the app.
+### When App starts a change the connection string in the appsettings.json File. Run the migration then start the app.
 
 ### The migration will seed the db with some demo data which you can be able to use to test
 
