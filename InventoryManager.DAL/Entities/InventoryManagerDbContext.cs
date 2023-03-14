@@ -17,6 +17,8 @@ namespace InventoryManager.DAL.Entities
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<Sales> Sales { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
@@ -65,7 +67,7 @@ namespace InventoryManager.DAL.Entities
             modelBuilder.Entity<Sales>()
                 .Property(s => s.Price)
                 .IsRequired();
-            
+           
             base.OnModelCreating(modelBuilder);
         }
     }
