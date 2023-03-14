@@ -69,9 +69,9 @@ namespace InventoryManager.BLL.Implementation
             };
         }
 
-        public async Task<IEnumerable<SalesViewModel>> GetUserSales(int UserId)
+        public IEnumerable<SalesViewModel> GetUserSales(int UserId)
         {
-            var products = _salesRepo.GetQueryable(p => p.UserId == UserId);
+            var products =  _salesRepo.GetQueryable(p => p.UserId == UserId);
             return products.Select(s => new SalesViewModel
             {
                 Id = s.Id,

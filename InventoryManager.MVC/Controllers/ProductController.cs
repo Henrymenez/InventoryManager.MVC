@@ -20,7 +20,7 @@ namespace InventoryManager.MVC.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<ProductViewModel> prodModel = _productService.GetUserProduct(1004);
+            IEnumerable<ProductViewModel> prodModel = _productService.GetUserProduct(1);
             return View(prodModel);
         }
 
@@ -99,7 +99,7 @@ namespace InventoryManager.MVC.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
+            if (!(id > 0))
             {
                 return NotFound();
             }

@@ -4,7 +4,7 @@ namespace InventoryManager.BLL.Interfaces
 {
     public interface ISalesServices
     {
-        Task<IEnumerable<SalesViewModel>> GetUserSales(int UserId);
+        IEnumerable<SalesViewModel> GetUserSales(int UserId);
 
         Task<(bool successful, string msg, SalesViewModel obj)> Add(SalesViewModel model);
 

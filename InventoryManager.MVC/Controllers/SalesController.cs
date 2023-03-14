@@ -1,5 +1,4 @@
-﻿using InventoryManager.BLL.Implementation;
-using InventoryManager.BLL.Interfaces;
+﻿using InventoryManager.BLL.Interfaces;
 using InventoryManager.BLL.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +15,10 @@ namespace InventoryManager.MVC.Controllers
             // _productService = productService;
         }
 
-        public async Task<IActionResult> Index(int Id)
+        public IActionResult Index(int Id)
         {
 
-            var sales = await _salesServices.GetUserSales(Id);
+            var sales =  _salesServices.GetUserSales(Id);
             if (sales == null)
             {
                 return NotFound();
@@ -31,7 +30,7 @@ namespace InventoryManager.MVC.Controllers
 
         public async Task<IActionResult> AddNew(int id)
         {
-       var sale =  await  _salesServices.GetSale(id);
+            var sale = await _salesServices.GetSale(id);
             return View(sale);
         }
 
@@ -46,7 +45,7 @@ namespace InventoryManager.MVC.Controllers
                 {
                     TempData["SuccessMsg"] = msg;
 
-                    return RedirectToAction("Index", routeValues: new { Id = obj.UserId } );
+                    return RedirectToAction("Index", routeValues: new { Id = obj.UserId });
                 }
                 ViewBag.ErrMsg = msg;
                 return View("AddNew");
@@ -93,7 +92,7 @@ namespace InventoryManager.MVC.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
+            if (!(id > 0))
             {
                 return NotFound();
             }
