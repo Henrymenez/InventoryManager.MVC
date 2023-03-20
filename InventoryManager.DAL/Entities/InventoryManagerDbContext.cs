@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InventoryManager.DAL.Entities
 {
@@ -12,12 +7,12 @@ namespace InventoryManager.DAL.Entities
         public InventoryManagerDbContext(DbContextOptions<InventoryManagerDbContext> options) : base(options)
         {
 
-        }   
+        }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Sales> Sales { get; set; }
 
-  
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,7 +51,7 @@ namespace InventoryManager.DAL.Entities
                 .IsRequired();
 
             modelBuilder.Entity<Sales>()
-                .Property(s => s.Name) 
+                .Property(s => s.Name)
                 .HasMaxLength(50)
                 .IsRequired();
 
@@ -67,7 +62,7 @@ namespace InventoryManager.DAL.Entities
             modelBuilder.Entity<Sales>()
                 .Property(s => s.Price)
                 .IsRequired();
-           
+
             base.OnModelCreating(modelBuilder);
         }
     }

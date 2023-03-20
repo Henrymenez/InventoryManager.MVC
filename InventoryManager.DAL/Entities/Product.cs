@@ -1,4 +1,5 @@
 ﻿using InventoryManager.DAL.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryManager.DAL.Entities
 {
@@ -10,8 +11,9 @@ namespace InventoryManager.DAL.Entities
         public long Quantity { get; set; }
         public decimal Price { get; set; }
         public string  BrandName { get; set; }
-        public int UserId { get; set; }
 
+        [ForeignKey("User")]
+        public int UserId { get; set; }
         public User User { get; set; }
 
         public IList<Sales> Sales { get; set; } = new List<Sales>();

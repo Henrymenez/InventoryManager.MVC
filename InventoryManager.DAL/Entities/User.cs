@@ -13,5 +13,6 @@ namespace InventoryManager.DAL.Entities
         public string Phone { get; set; } 
         public string Password { get; set; }
         public IList<Product> Products { get; set; } = new List<Product>();
+        public IList<Sales> Sales { get; set; } = new List<Sales>();
     }
 }

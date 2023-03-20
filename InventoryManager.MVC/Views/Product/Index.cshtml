@@ -10,7 +10,7 @@
 @if (@TempData["SuccessMsg"] != null)
     {
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Error!</strong> @TempData["SuccessMsg"]
+        <strong>Success!</strong> @TempData["SuccessMsg"]
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
@@ -32,12 +32,13 @@
                 <th scope="col">Price</th>
                 <th scope="col">Brand Name</th>
                 <th scope="colgroup">Action</th>
+                
             </tr>
         </thead>
         <tbody>
 
             @{
-            foreach (var item in Model.Select((value, i) => new { value, i }))
+            foreach (var item in Model.OrderByDescending(p => p.Id).Select((value, i) => new { value, i }))
                 {
                     <tr>
                     <th scope="row">@(item.i + 1)</th>
